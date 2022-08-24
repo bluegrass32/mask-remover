@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>MASK-REMOVER</title>
+        <link rel="stylesheet" type="text/css" href="../static/css/resultstyle.css">
+    </head>
+
+    <body>
+        <header class="header-nav">
+            <div class="header-title">
+                <nav><a href="/" class="title-logo">MASK REMOVER</a></nav>
+            </div>
+            <div class="header-list">
+                <nav><a href="/" class="btn-home">Home</a></nav>
+                <nav><a href="/" class="btn-about">About</a></nav>
+                <nav><a href="/predict" class="btn-predict">Predict</a></nav>
+            </div>
+        </header>
+
+        <div class="enter-btn">
+            {% block content %}
+            <center>
+            <img src= "{{ img_path }}" style="margin: 20px; vertical-align: bottom; width: 40%;">
+            <img src= "{{ predict_img_path }}" style="margin: 20px; vertical-align: bottom; width: 40%;">
+            </center>
+            <a href="/predict" class="re-btn">更にマスクを外す</a>
+            {% endblock %}
+        </div>
+
+        
+
+        <footer>
+            <small>© 2022 Aoi Shibano</small>
+        </footer>
+    </body>

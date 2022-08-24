@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>MASK-REMOVER</title>
+        <!-- ファビコン -->
+        <link rel="icon" type="image/png" sizes="16x16"  href="../static/logo/favicon-16x16.png">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="theme-color" content="#ffffff">
+        
+        <link rel="stylesheet" type="text/css" href="../static/css/indexstyle.css">
+        <!-- 画像がフワッと切り替わるための処理 -->
+        <style type="text/css">
+            #first-block {
+                width: 100%;
+                height: 1000px;
+                margin: 0 auto;
+                text-align: left;
+                overflow: hidden;
+                position: relative;
+            }
+            
+            #first-block img {
+                top: 0;
+                left: 0;
+                position: absolute;
+            }
+        </style>    
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script type="text/javascript">
+            $(function(){
+                var setImg = '#first-block';
+                var fadeSpeed = 1600;
+                var switchDelay = 5000;
+            
+                $(setImg).children('img').css({opacity:'0'});
+                $(setImg + ' img:first').stop().animate({opacity:'1',zIndex:'20'},fadeSpeed);
+            
+                setInterval(function(){
+                    $(setImg + ' :first-child').animate({opacity:'0'},fadeSpeed).next('img').animate({opacity:'1'},fadeSpeed).end().appendTo(setImg);
+                },switchDelay);
+            });
+        </script>
+
+    </head>
+
+    <body>
+        <header class="header-nav">
+            <div class="header-title">
+                <nav><a href="#first-block" class="title-logo">MASK REMOVER</a></nav>
+            </div>
+            <div class="header-list">
+                <nav><a href="#first-block" class="btn-home">Home</a></nav>
+                <nav><a href="#second-block" class="btn-about">About</a></nav>
+                <nav><a href="/predict" class="btn-predict">Predict</a></nav>
+            </div>
+        </header>
+        
+
+        <div id="first-block">
+            <img src="../static/logo/maskgirl1.jpg"  width="100%" height="1000" alt="">
+            <img src="../static/logo/maskboy1.jpg"  width="100%" height="1000" alt="">
+            <img src="../static/logo/maskguy1.jpg"  width="100%" height="1000" alt="">
+            <img src="../static/logo/maskfamily1.jpg"  width="100%" height="1000" alt="">
+        </div>
+        <div id="second-block">
+            <p class="info-title">
+                素顔を曝け出せ
+            </p>
+            <p class="info-text">
+                <span>
+                マスク着用が当たり前となった世の中
+                <br>
+                新しく知り合ったあの人はどんな顔をしているのか
+                <br>
+                親しいあの人の顔はどんな風であったか
+                <br>
+                MASK REMOVERが気になるの人の素顔を曝け出します
+                </span>
+            </p>
+            <nav><a href="/predict" class="txtbtn-predict">REMOVE NOW!</a></nav>
+        </div>
+
+        <footer>
+            <small>© 2022 Aoi Shibano</small>
+        </footer>
+    </body>

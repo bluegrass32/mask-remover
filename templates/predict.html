@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>MASK-REMOVER</title>
+        <link rel="stylesheet" type="text/css" href="../static/css/predictstyle.css">
+    </head>
+
+    <body>
+        <header class="header-nav">
+            <div class="header-title">
+                <nav><a href="/" class="title-logo">MASK REMOVER</a></nav>
+            </div>
+            <div class="header-list">
+                <nav><a href="/" class="btn-home">Home</a></nav>
+                <nav><a href="/" class="btn-about">About</a></nav>
+                <nav><a href="/predict" class="btn-predict">Predict</a></nav>
+            </div>
+        </header>
+
+        <div class="enter-btn">
+            <h2>マスクをした人の写真をアップロードしてください</h2>
+            <form action = "/upload" method="post" enctype="multipart/form-data">
+                <label class="filelabel">
+                    <input type="file" id = "upload_file" name = "upload_file" multiple="multiple" class="form-control"  required onchange="previewFile(this);" >ファイルを添付
+                </label>
+                <input type="submit" value="送信" class="form-control-btn">
+            </form>
+
+            <p>プレビュー</p>
+            <img id="preview" style="max-width:400px;">
+ 
+            <script>
+            function previewFile(hoge){
+                var fileData = new FileReader();
+                fileData.onload = (function() {
+                //id属性が付与されているimgタグのsrc属性に、fileReaderで取得した値の結果を入力することで
+                //プレビュー表示している
+                document.getElementById('preview').src = fileData.result;
+                });
+                fileData.readAsDataURL(hoge.files[0]);
+            }
+            </script>
+        </div>
+
+        
+
+        <footer>
+            <small>© 2022 Aoi Shibano</small>
+        </footer>
+    </body>
